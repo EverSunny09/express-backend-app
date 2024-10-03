@@ -1,9 +1,15 @@
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const port = 3000;
 const crypto = require("crypto");
 
 // Middleware to parse JSON bodies
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow only your frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  //credentials: true, // Allow credentials if needed
+}));
 app.use(express.json());
 
 // In-memory data stores
